@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.18.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: server
+  name: server
+spec:
+  selector:
+    matchLabels:
+      io.kompose.service: server
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: server
+    spec:
+      containers:
+        - env:
+            - name: USER_UID
+              value: 1000
+            - name: USER_GID
+              value: 1000
+            - name: DB_TYPE
+              value: mysql
+            - name: DB_HOST
+              value: db:3306
+            - name: DB_NAME
+              value: gitea
+            - name: DB_USER
+              value: gitea
+            - name: DB_PASSWORD
+              value: gitea
+          image: gitea/gitea:latest
+          name: server
+          ports:
+            - containerPort: 3000
+            - containerPort: 222
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: giteavol
+      restartPolicy: Always
+      volumes:
+        - name: giteavol
+          persistentVolumeClaim:
+            claimName: giteavol
+status: {}
