@@ -23,9 +23,9 @@ spec:
       containers:
         - env:
             - name: USER_UID
-              value: 1000
+              value: "1000"
             - name: USER_GID
-              value: 1000
+              value: "1000"
             - name: DB_TYPE
               value: mysql
             - name: DB_HOST
