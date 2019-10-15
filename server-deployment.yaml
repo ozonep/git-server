@@ -36,11 +36,25 @@ spec:
               value: gitea
             - name: DB_PASSWORD
               value: gitea
+            - name: DISABLE_REGISTRATION
+              value: "true"
+            - name: RUN_MODE
+              value: prod
+            - name: APP_NAME
+              value: "Diggit User Repository"
+            - name: ENABLE_GZIP
+              value: "true"
+            - name: LANGS
+              value: "en-US"
+            - name: NAMES
+              value: "English"
+            - name: SHOW_FOOTER_VERSION
+              value: "false"
           image: gitea/gitea:latest
           name: server
           ports:
             - containerPort: 3000
-            - containerPort: 222
+            - containerPort: 22
           resources: {}
           volumeMounts:
             - mountPath: /data
