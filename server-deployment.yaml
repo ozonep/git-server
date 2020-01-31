@@ -37,19 +37,11 @@ spec:
             - name: DB_PASSWORD
               value: gitea
             - name: DISABLE_REGISTRATION
-              value: "true"
+              value: "false"
             - name: RUN_MODE
-              value: prod
+              value: dev
             - name: APP_NAME
               value: "Diggit User Repository"
-            - name: ENABLE_GZIP
-              value: "true"
-            - name: LANGS
-              value: "en-US"
-            - name: NAMES
-              value: "English"
-            - name: SHOW_FOOTER_VERSION
-              value: "false"
           image: gitea/gitea:latest
           name: server
           ports:
